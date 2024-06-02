@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>截止2020年我国隧道种类(按位置分)</title>
+    <script src="echarts.js"></script>
+    <style>
+        body {
+            background-image: url('./photos/隧道背景3.jpg');
+            /* 替换 'background.jpg' 为您实际的背景图片路径 */
+            background-size: cover;
+            /* 背景图片尺寸为覆盖整个页面 */
+            background-position: center;
+            /* 背景图片位置居中 */
+            background-repeat: no-repeat;
+            /* 不重复平铺背景图片 */
+            /* 如果需要背景图片固定不滚动，可以添加以下代码 */
+            /* background-attachment: fixed; */
+        }
+
+        #main {
+            width: 600px;
+            height: 600px;
+            /* background-color: pink; */
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            // title: {
+            //     text: "截止2020年我国隧道种类(按位置分)"	
+            // },
+            tooltip: {
+                trigger: 'item'
+            },
+            legend: {
+                top: '5%',
+                left: 'center',
+                FontFaceSet: 'Arial',
+                textStyle: {
+                    color: "rgb(255, 255, 255)",
+                    fontSize: 20
+                }
+            },
+            series: [
+                {
+                    name: '数量',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: {
+                        borderRadius: 10,
+                        borderColor: '#fff',
+                        borderWidth: 2
+                    },
+                    label: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 40,
+                            fontWeight: 'bold',
+                            FontFaceSet: 'Arial',
+                            color: '#fff'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        { value: 252, name: '山岭隧道' },
+                        { value: 372, name: '城市隧道' },
+                        { value: 245, name: '水底隧道' }
+                    ]
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+</body>
+
+</html>
